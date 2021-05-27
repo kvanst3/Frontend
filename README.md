@@ -1,1 +1,1 @@
-This repo will serve as dumping ground for  any frontend related work/practice
+This repo will serve as dumping ground for  any frontend related work/practice.
