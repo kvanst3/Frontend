@@ -1,0 +1,17 @@
+body {
+    background-color: #dbe2ef;
+}
+hr {
+    background-color: #f9f7f7;
+    border-style: dotted none none;
+    border-width: 7px;
+    width: 5%;
+    background-color: #dbe2ef;
+    border-color: #3f72af;
+}
+h3, h1, em, p, li, td, a {
+    color: #112d4e;
+} 
+.avatar {
+    border-radius: 50%
+}
