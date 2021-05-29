@@ -12,6 +12,6 @@ hr {
 h3, h1, em, p, li, td, a {
     color: #112d4e;
 } 
-.avatar {
+#avatar {
     border-radius: 50%
 }
