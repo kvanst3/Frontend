@@ -5,6 +5,19 @@ body{
 h1{
     margin-top: 0;
 }
-.intro{
+.intro-container{
     background-color: #f4eeff;
+    position: relative;
+    padding-top: 100px;
+    font-family: Sacramento ,'Times New Roman', Times, serif;
+}
+.bottom-cloud{
+    position: absolute;
+    left: 300px;
+    bottom: 300px;
+}
+.top-cloud{
+    position: absolute;
+    right: 300px;
+    top: 50px;
 }
