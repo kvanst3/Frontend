@@ -22,6 +22,8 @@ def home():
 def login():
     form = MyForm()
     if request.method == "POST":
+        email_data = form.email.data
+        password_data = form.password.data
         if form.validate_on_submit():
             return render_template('success.html')
         return render_template('login.html', form=form)
