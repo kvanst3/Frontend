@@ -6,8 +6,8 @@ import os
 
 
 class MyForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=8), Email(message=None, granular_message=False, check_deliverability=False, allow_smtputf8=True, allow_empty_local=False)])
+    email = StringField('Email', validators=[DataRequired(), Email(message=None, granular_message=False, check_deliverability=False, allow_smtputf8=True, allow_empty_local=False)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=8)])
     submit = SubmitField(label="Log In")
 
 
@@ -21,12 +21,11 @@ def home():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = MyForm()
-    if request.method == "POST":
-        email_data = form.email.data
-        password_data = form.password.data
-        if form.validate_on_submit():
+    if request.method == "POST" and form.validate_on_submit():
+        if form.email.data == "admin@email.com" and form.password.data == "12345678":
             return render_template('success.html')
-        return render_template('login.html', form=form)
+        else:
+            return render_template("denied.html")
     return render_template("login.html", form=form)
 
 if __name__ == '__main__':
