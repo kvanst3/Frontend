@@ -6,14 +6,28 @@
 	</head>
 	<body>
         <div class="container">
-		<h1>Login</h1>
-        <!-- This is where our form will go. -->
-		<form method="POST" action="{{ url_for('login') }}">
-			{{ form.csrf_token }}
-			{{ form.email.label }} {{ form.email(size=30) }}
-			{{ form.password.label }} {{ form.password(size=30) }}
-			<input type="submit" value="Login">
-		</form>
+			{% if form.errors %}
+			<ul class="errors">
+				{% for field_name, field_errors in form.errors|dictsort if field_errors %}
+				{% for error in field_errors %}
+				<li>{{ form[field_name].label }}: {{ error }}</li>
+				{% endfor %}
+				{% endfor %}
+			</ul>
+			{% endif %}
+
+			<h1>Login</h1>
+			<!-- This is where our form will go. -->
+			<form method="POST" action="{{ url_for('login') }}" novalidate>
+				{{ form.csrf_token }}
+			    <p>
+				{{ form.email.label }} <br> {{ form.email(size=30) }}
+			    </p>
+			    <p>
+				{{ form.password.label }} <br> {{ form.password(size=30) }}
+			    </p>
+			    {{ form.submit }}
+			</form>
 		
         </div>
 	</body>
