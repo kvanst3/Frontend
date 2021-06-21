@@ -12,12 +12,9 @@ class MyForm(FlaskForm):
     submit = SubmitField(label="Log In")
 
 
-def create_app():
-  app = Flask(__name__)
-  Bootstrap(app)
+app = Flask(__name__)
+Bootstrap(app)
 
-  return app
-app = create_app()
 app.secret_key = os.environ.get("INDI_PW")
 
 @app.route("/")
