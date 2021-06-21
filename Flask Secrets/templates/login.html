@@ -1,34 +1,31 @@
-<!DOCTYPE HTML>
+{% extends "bootstrap/base.html" %}
 
-<html>
-	<head>
-		<title>Login</title>
-	</head>
-	<body>
-        <div class="container">
-			{% if form.errors %}
-			<ul class="errors">
-				{% for field_name, field_errors in form.errors|dictsort if field_errors %}
-				{% for error in field_errors %}
-				<li>{{ form[field_name].label }}: {{ error }}</li>
-				{% endfor %}
-				{% endfor %}
-			</ul>
-			{% endif %}
+{% block title %}Login{% endblock %}
 
-			<h1>Login</h1>
-			<!-- This is where our form will go. -->
-			<form method="POST" action="{{ url_for('login') }}" novalidate>
-				{{ form.csrf_token }}
-			    <p>
-				{{ form.email.label }} <br> {{ form.email(size=30) }}
-			    </p>
-			    <p>
-				{{ form.password.label }} <br> {{ form.password(size=30) }}
-			    </p>
-			    {{ form.submit }}
-			</form>
-		
-        </div>
-	</body>
-</html>
+{% block content %}
+<div class="container">
+	{% if form.errors %}
+	<ul class="errors">
+		{% for field_name, field_errors in form.errors|dictsort if field_errors %}
+		{% for error in field_errors %}
+		<li>{{ form[field_name].label }}: {{ error }}</li>
+		{% endfor %}
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	<h1>Login</h1>
+	<!-- This is where our form will go. -->
+	<form method="POST" action="{{ url_for('login') }}" novalidate>
+		{{ form.csrf_token }}
+		<p>
+		{{ form.email.label }} <br> {{ form.email(size=30) }}
+		</p>
+		<p>
+		{{ form.password.label }} <br> {{ form.password(size=30) }}
+		</p>
+		{{ form.submit }}
+	</form>
+
+</div>
+{% endblock %}>

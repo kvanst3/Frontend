@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, Email
 import os
+from flask_bootstrap import Bootstrap
 
 
 class MyForm(FlaskForm):
@@ -11,7 +12,12 @@ class MyForm(FlaskForm):
     submit = SubmitField(label="Log In")
 
 
-app = Flask(__name__)
+def create_app():
+  app = Flask(__name__)
+  Bootstrap(app)
+
+  return app
+app = create_app()
 app.secret_key = os.environ.get("INDI_PW")
 
 @app.route("/")
